@@ -1,6 +1,6 @@
 <div align="center">
 
-# 👥 APIs de Talento Humano
+# APIs de Talento Humano
 
 ### Microservicios REST para la gestión de personal y el control de asistencia (reloj de firmas) de una empresa de call center
 
@@ -8,14 +8,14 @@
 [![Flask](https://img.shields.io/badge/Flask-3.0-000000?style=for-the-badge&logo=flask&logoColor=white)](https://flask.palletsprojects.com/)
 [![PostgreSQL](https://img.shields.io/badge/PostgreSQL-15-4169E1?style=for-the-badge&logo=postgresql&logoColor=white)](https://www.postgresql.org/)
 [![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-ORM-D71F00?style=for-the-badge&logo=sqlalchemy&logoColor=white)](https://www.sqlalchemy.org/)
-[![Postman](https://img.shields.io/badge/Postman-Colecciones-FF6C37?style=for-the-badge&logo=postman&logoColor=white)](#-pruebas)
-[![REST](https://img.shields.io/badge/API-REST%20%2F%20JSON-0A7EA4?style=for-the-badge)](#-endpoints)
+[![Postman](https://img.shields.io/badge/Postman-Colecciones-FF6C37?style=for-the-badge&logo=postman&logoColor=white)](#pruebas)
+[![REST](https://img.shields.io/badge/API-REST%20%2F%20JSON-0A7EA4?style=for-the-badge)](#endpoints)
 
 </div>
 
 ---
 
-## 📖 Descripción
+## Descripción
 
 Este repositorio contiene **dos servicios REST independientes** que comparten la misma base de datos PostgreSQL:
 
@@ -26,7 +26,7 @@ Este repositorio contiene **dos servicios REST independientes** que comparten la
 
 El servicio de firmas resuelve un problema real de las empresas con turnos: el empleado **siempre llama al mismo endpoint** y el sistema deduce qué evento del día le corresponde registrar.
 
-## 🏗️ Arquitectura
+## Arquitectura
 
 ```mermaid
 flowchart LR
@@ -40,7 +40,7 @@ flowchart LR
 - **api-firma:** patrón *Application Factory*, modelos **SQLAlchemy**, validación y serialización con **Marshmallow**, driver `pg8000` (Python puro) y migraciones con Flask-Migrate.
 - Configuración por variables de entorno (`.env`), sin credenciales en el código.
 
-## ⚙️ Lógica del reloj de firmas
+## Lógica del reloj de firmas
 
 `POST /api/firmas/procesar` aplica una **verificación en cascada** sobre el registro del día:
 
@@ -63,7 +63,7 @@ flowchart TD
 
 Los atrasos se calculan contra el **turno** y el **receso** asignados al empleado. Un endpoint adicional **autocompleta** las firmas incompletas al cierre del día.
 
-## 🔌 Endpoints
+## Endpoints
 
 **api-personal** · `http://localhost:5000/api`
 
@@ -80,7 +80,7 @@ Los atrasos se calculan contra el **turno** y el **receso** asignados al emplead
 
 | Método | Ruta | Descripción |
 |---|---|---|
-| POST | `/firmas/procesar` | ⭐ Registra el siguiente evento del día automáticamente |
+| POST | `/firmas/procesar` |  Registra el siguiente evento del día automáticamente |
 | POST | `/firmas/iniciar-jornada` | Inicio de jornada explícito |
 | GET | `/firmas` · `/firmas/<id>` | Listar / obtener firmas |
 | GET | `/firmas/empleado/<ci>` | Historial de un empleado |
@@ -93,7 +93,7 @@ Los atrasos se calculan contra el **turno** y el **receso** asignados al emplead
 
 Documentación detallada: [`docs/api-firma-endpoints.md`](docs/api-firma-endpoints.md)
 
-## 🗄️ Modelo de datos
+## Modelo de datos
 
 ```mermaid
 erDiagram
@@ -139,7 +139,7 @@ erDiagram
 
 > La base incluida en `database/talento_humano_demo.sql` contiene **datos ficticios** de demostración.
 
-## 🚀 Ejecución local
+## Ejecución local
 
 ```bash
 # 1. Base de datos
@@ -161,13 +161,13 @@ cp .env.example .env
 python run.py                                      # http://localhost:5001
 ```
 
-## 🧪 Pruebas
+## Pruebas
 
 - Colecciones **Postman** listas para importar en cada servicio.
 - Pruebas automatizadas de endpoints en `api-personal/tests/`.
 - Guía de pruebas paso a paso de un día laboral completo: [`docs/api-firma-guia-pruebas.md`](docs/api-firma-guia-pruebas.md).
 
-## 👤 Autor
+## Autor
 
 **Marco Adrián Padilla Triviño** · Estudiante de Ingeniería de Software, Universidad de las Fuerzas Armadas ESPE
 
