@@ -1,0 +1,151 @@
+{
+  "info": {
+    "name": "API Personal - Flask",
+    "description": "Colección de endpoints para la API de gestión de personal",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "1. Health Check - Info de la API",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": [""]
+        }
+      }
+    },
+    {
+      "name": "2. Listar todos los empleados",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/personal",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "personal"]
+        }
+      }
+    },
+    {
+      "name": "3. Obtener empleado por CI",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/personal/1700000008",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "personal", "1700000008"]
+        }
+      }
+    },
+    {
+      "name": "4. Buscar empleados por nombre",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/personal/search?nombres=ERIKA",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "personal", "search"],
+          "query": [
+            {
+              "key": "nombres",
+              "value": "ERIKA"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "5. Buscar por apellidos",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/personal/search?apellidos=CASTILLO",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "personal", "search"],
+          "query": [
+            {
+              "key": "apellidos",
+              "value": "CASTILLO"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "6. Crear nuevo empleado",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"ci\": \"9999999999\",\n  \"id_a\": 1,\n  \"id_t\": 3,\n  \"id_b\": 11,\n  \"id_ba\": 4,\n  \"nombres\": \"JUAN CARLOS\",\n  \"apellidos\": \"PEREZ LOPEZ\",\n  \"direccion\": \"QUITO NORTE\",\n  \"telefonos\": \"1700000001\",\n  \"correo\": \"juan.perez@example.com\",\n  \"fecha_nacimiento\": \"1990-05-15\",\n  \"fecha_ingreso\": \"2024-01-10\",\n  \"fecha_contrato\": \"2024-01-10\",\n  \"salario\": 500.00\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/personal",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "personal"]
+        }
+      }
+    },
+    {
+      "name": "7. Actualizar empleado",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"id_a\": 1,\n  \"id_t\": 3,\n  \"id_b\": 11,\n  \"id_ba\": 4,\n  \"nombres\": \"JUAN CARLOS\",\n  \"apellidos\": \"PEREZ LOPEZ\",\n  \"direccion\": \"QUITO SUR - ACTUALIZADO\",\n  \"telefonos\": \"1700000001\",\n  \"correo\": \"juan.perez.actualizado@example.com\",\n  \"fecha_nacimiento\": \"1990-05-15\",\n  \"fecha_ingreso\": \"2024-01-10\",\n  \"fecha_contrato\": \"2024-01-10\",\n  \"salario\": 600.00\n}"
+        },
+        "url": {
+          "raw": "http://localhost:5000/api/personal/9999999999",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "personal", "9999999999"]
+        }
+      }
+    },
+    {
+      "name": "8. Eliminar empleado",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:5000/api/personal/9999999999",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "5000",
+          "path": ["api", "personal", "9999999999"]
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,1148 @@
+{
+	"info": {
+		"_postman_id": "firma-api-collection-2026",
+		"name": "API Firma - Sistema de Firmas",
+		"description": "Colección completa de endpoints para la API REST de Firmas con Flask y PostgreSQL",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "GET - Obtener todas las firmas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/firmas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"firmas"
+					]
+				},
+				"description": "Obtiene todas las firmas registradas en el sistema, ordenadas por fecha descendente"
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/firmas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"firmas"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id_f\": 1,\n            \"fecha_firma\": \"2026-02-03\",\n            \"h_i_jornada\": \"08:35:00\",\n            \"a_i_jornada\": \"00:05:00\",\n            \"h_i_break\": \"10:30:00\",\n            \"h_f_break\": \"10:47:00\",\n            \"a_f_break\": \"00:02:00\",\n            \"h_i_almuerzo\": \"13:00:00\",\n            \"h_f_almuerzo\": \"14:05:00\",\n            \"a_f_almuerzo\": \"00:05:00\",\n            \"h_f_jornada\": \"17:30:00\",\n            \"ci\": \"1700000004\",\n            \"id_t\": 7,\n            \"id_b\": 15,\n            \"id_ba\": 16,\n            \"observacion\": null,\n            \"empleado\": {\n                \"ci\": \"1700000004\",\n                \"nombres\": \"Juan\",\n                \"apellidos\": \"Pérez\"\n            },\n            \"turno\": {\n                \"id_t\": 7,\n                \"nombre_t\": \"Turno Mañana\"\n            }\n        }\n    ],\n    \"total\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "GET - Obtener firma por ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/firmas/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"firmas",
+						"1"
+					]
+				},
+				"description": "Obtiene una firma específica por su ID"
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/firmas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"firmas",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id_f\": 1,\n        \"fecha_firma\": \"2026-02-03\",\n        \"h_i_jornada\": \"08:35:00\",\n        \"ci\": \"1700000004\"\n    }\n}"
+				},
+				{
+					"name": "Not Found",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/firmas/999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"firmas",
+								"999"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"error\": \"Firma no encontrada\"\n}"
+				}
+			]
+		},
+		{
+			"name": "GET - Obtener firma por CI y fecha",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/firmas/empleado/1700000004/fecha/2026-02-03",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"firmas",
+						"empleado",
+						"1700000004",
+						"fecha",
+						"2026-02-03"
+					]
+				},
+				"description": "Obtiene la firma de un empleado en una fecha específica"
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/firmas/empleado/1700000004/fecha/2026-02-03",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"firmas",
+								"empleado",
+								"1700000004",
+								"fecha",
+								"2026-02-03"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id_f\": 1,\n        \"fecha_firma\": \"2026-02-03\",\n        \"h_i_jornada\": \"08:35:00\",\n        \"ci\": \"1700000004\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "GET - Obtener firmas de un empleado",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/firmas/empleado/1700000004",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"firmas",
+						"empleado",
+						"1700000004"
+					]
+				},
+				"description": "Obtiene todas las firmas de un empleado específico"
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/firmas/empleado/1700000004",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"firmas",
+								"empleado",
+								"1700000004"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id_f\": 1,\n            \"fecha_firma\": \"2026-02-03\",\n            \"ci\": \"1700000004\"\n        },\n        {\n            \"id_f\": 2,\n            \"fecha_firma\": \"2026-02-02\",\n            \"ci\": \"1700000004\"\n        }\n    ],\n    \"total\": 2\n}"
+				}
+			]
+		},
+		{
+			"name": "GET - Obtener firmas por fecha",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/firmas/fecha/2026-02-03",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"firmas",
+						"fecha",
+						"2026-02-03"
+					]
+				},
+				"description": "Obtiene todas las firmas de una fecha específica"
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/firmas/fecha/2026-02-03",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"firmas",
+								"fecha",
+								"2026-02-03"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id_f\": 1,\n            \"fecha_firma\": \"2026-02-03\",\n            \"ci\": \"1700000004\"\n        },\n        {\n            \"id_f\": 5,\n            \"fecha_firma\": \"2026-02-03\",\n            \"ci\": \"1700000001\"\n        }\n    ],\n    \"total\": 2\n}"
+				}
+			]
+		},
+		{
+			"name": "GET - Obtener firmas incompletas",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/firmas/incompletas",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"firmas",
+						"incompletas"
+					]
+				},
+				"description": "Obtiene firmas que no han completado la jornada (h_f_jornada es NULL)"
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/firmas/incompletas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"firmas",
+								"incompletas"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id_f\": 3,\n            \"fecha_firma\": \"2026-02-02\",\n            \"h_i_jornada\": \"08:30:00\",\n            \"h_f_jornada\": null,\n            \"ci\": \"1700000004\"\n        }\n    ],\n    \"total\": 1\n}"
+				}
+			]
+		},
+		{
+			"name": "POST - Iniciar jornada (INSERT)",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ci\": \"1700000004\",\n    \"fecha_firma\": \"2026-02-03\",\n    \"h_i_jornada\": \"08:35:00\",\n    \"a_i_jornada\": \"00:05:00\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/firmas/iniciar-jornada",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"firmas",
+						"iniciar-jornada"
+					]
+				},
+				"description": "Registra el inicio de jornada de un empleado (INSERT). Solo se usa cuando es la primera firma del día."
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ci\": \"1700000004\",\n    \"fecha_firma\": \"2026-02-03\",\n    \"h_i_jornada\": \"08:35:00\",\n    \"a_i_jornada\": \"00:05:00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/firmas/iniciar-jornada",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"firmas",
+								"iniciar-jornada"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Jornada iniciada correctamente\",\n    \"data\": {\n        \"id_f\": 1,\n        \"fecha_firma\": \"2026-02-03\",\n        \"h_i_jornada\": \"08:35:00\",\n        \"a_i_jornada\": \"00:05:00\",\n        \"h_i_break\": null,\n        \"h_f_break\": null,\n        \"a_f_break\": null,\n        \"h_i_almuerzo\": null,\n        \"h_f_almuerzo\": null,\n        \"a_f_almuerzo\": null,\n        \"h_f_jornada\": null,\n        \"ci\": \"1700000004\",\n        \"id_t\": 7,\n        \"id_b\": 15,\n        \"id_ba\": 16,\n        \"observacion\": null\n    }\n}"
+				},
+				{
+					"name": "Firma ya existe",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ci\": \"1700000004\",\n    \"fecha_firma\": \"2026-02-03\",\n    \"h_i_jornada\": \"08:35:00\",\n    \"a_i_jornada\": \"00:05:00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/firmas/iniciar-jornada",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"firmas",
+								"iniciar-jornada"
+							]
+						}
+					},
+					"status": "Bad Request",
+					"code": 400,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"error\": \"Ya existe un registro de firma para este empleado en esta fecha\"\n}"
+				}
+			]
+		},
+		{
+			"name": "POST - Procesar firma (Lógica cascada) - INICIO JORNADA",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ci\": \"1700000004\",\n    \"fecha_firma\": \"2026-02-03\",\n    \"hora_actual\": \"08:35:00\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/firmas/procesar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"firmas",
+						"procesar"
+					]
+				},
+				"description": "Procesa firma con verificación en cascada de NULL. Si no existe firma, crea una nueva (INICIO_JORNADA)."
+			},
+			"response": [
+				{
+					"name": "Inicio Jornada",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ci\": \"1700000004\",\n    \"fecha_firma\": \"2026-02-03\",\n    \"hora_actual\": \"08:35:00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/firmas/procesar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"firmas",
+								"procesar"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Inicio de jornada registrado\",\n    \"evento\": \"INICIO_JORNADA\",\n    \"data\": {\n        \"id_f\": 1,\n        \"fecha_firma\": \"2026-02-03\",\n        \"h_i_jornada\": \"08:35:00\",\n        \"a_i_jornada\": \"00:05:00\",\n        \"h_i_break\": null,\n        \"h_f_break\": null,\n        \"ci\": \"1700000004\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "POST - Procesar firma - SALIDA BREAK",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ci\": \"1700000004\",\n    \"fecha_firma\": \"2026-02-03\",\n    \"hora_actual\": \"10:30:00\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/firmas/procesar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"firmas",
+						"procesar"
+					]
+				},
+				"description": "Segunda firma del día: Registra salida a break (h_i_break)"
+			},
+			"response": [
+				{
+					"name": "Salida Break",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ci\": \"1700000004\",\n    \"fecha_firma\": \"2026-02-03\",\n    \"hora_actual\": \"10:30:00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/firmas/procesar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"firmas",
+								"procesar"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Firma procesada: SALIDA_BREAK\",\n    \"evento\": \"SALIDA_BREAK\",\n    \"data\": {\n        \"id_f\": 1,\n        \"fecha_firma\": \"2026-02-03\",\n        \"h_i_jornada\": \"08:35:00\",\n        \"h_i_break\": \"10:30:00\",\n        \"h_f_break\": null,\n        \"ci\": \"1700000004\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "POST - Procesar firma - REGRESO BREAK",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ci\": \"1700000004\",\n    \"fecha_firma\": \"2026-02-03\",\n    \"hora_actual\": \"10:47:00\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/firmas/procesar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"firmas",
+						"procesar"
+					]
+				},
+				"description": "Tercera firma del día: Registra regreso de break (h_f_break) y calcula atraso"
+			},
+			"response": [
+				{
+					"name": "Regreso Break",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ci\": \"1700000004\",\n    \"fecha_firma\": \"2026-02-03\",\n    \"hora_actual\": \"10:47:00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/firmas/procesar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"firmas",
+								"procesar"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Firma procesada: REGRESO_BREAK\",\n    \"evento\": \"REGRESO_BREAK\",\n    \"data\": {\n        \"id_f\": 1,\n        \"fecha_firma\": \"2026-02-03\",\n        \"h_i_jornada\": \"08:35:00\",\n        \"h_i_break\": \"10:30:00\",\n        \"h_f_break\": \"10:47:00\",\n        \"a_f_break\": \"00:02:00\",\n        \"h_i_almuerzo\": null,\n        \"ci\": \"1700000004\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "POST - Procesar firma - SALIDA ALMUERZO",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ci\": \"1700000004\",\n    \"fecha_firma\": \"2026-02-03\",\n    \"hora_actual\": \"13:00:00\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/firmas/procesar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"firmas",
+						"procesar"
+					]
+				},
+				"description": "Cuarta firma del día: Registra salida a almuerzo (h_i_almuerzo)"
+			},
+			"response": [
+				{
+					"name": "Salida Almuerzo",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ci\": \"1700000004\",\n    \"fecha_firma\": \"2026-02-03\",\n    \"hora_actual\": \"13:00:00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/firmas/procesar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"firmas",
+								"procesar"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Firma procesada: SALIDA_ALMUERZO\",\n    \"evento\": \"SALIDA_ALMUERZO\",\n    \"data\": {\n        \"id_f\": 1,\n        \"fecha_firma\": \"2026-02-03\",\n        \"h_i_break\": \"10:30:00\",\n        \"h_f_break\": \"10:47:00\",\n        \"h_i_almuerzo\": \"13:00:00\",\n        \"h_f_almuerzo\": null,\n        \"ci\": \"1700000004\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "POST - Procesar firma - REGRESO ALMUERZO",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ci\": \"1700000004\",\n    \"fecha_firma\": \"2026-02-03\",\n    \"hora_actual\": \"14:05:00\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/firmas/procesar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"firmas",
+						"procesar"
+					]
+				},
+				"description": "Quinta firma del día: Registra regreso de almuerzo (h_f_almuerzo) y calcula atraso"
+			},
+			"response": [
+				{
+					"name": "Regreso Almuerzo",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ci\": \"1700000004\",\n    \"fecha_firma\": \"2026-02-03\",\n    \"hora_actual\": \"14:05:00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/firmas/procesar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"firmas",
+								"procesar"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Firma procesada: REGRESO_ALMUERZO\",\n    \"evento\": \"REGRESO_ALMUERZO\",\n    \"data\": {\n        \"id_f\": 1,\n        \"fecha_firma\": \"2026-02-03\",\n        \"h_i_almuerzo\": \"13:00:00\",\n        \"h_f_almuerzo\": \"14:05:00\",\n        \"a_f_almuerzo\": \"00:05:00\",\n        \"h_f_jornada\": null,\n        \"ci\": \"1700000004\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "POST - Procesar firma - FIN JORNADA",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"ci\": \"1700000004\",\n    \"fecha_firma\": \"2026-02-03\",\n    \"hora_actual\": \"17:30:00\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/firmas/procesar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"firmas",
+						"procesar"
+					]
+				},
+				"description": "Sexta firma del día: Registra fin de jornada (h_f_jornada)"
+			},
+			"response": [
+				{
+					"name": "Fin Jornada",
+					"originalRequest": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"ci\": \"1700000004\",\n    \"fecha_firma\": \"2026-02-03\",\n    \"hora_actual\": \"17:30:00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/firmas/procesar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"firmas",
+								"procesar"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Firma procesada: FIN_JORNADA\",\n    \"evento\": \"FIN_JORNADA\",\n    \"data\": {\n        \"id_f\": 1,\n        \"fecha_firma\": \"2026-02-03\",\n        \"h_i_jornada\": \"08:35:00\",\n        \"h_i_break\": \"10:30:00\",\n        \"h_f_break\": \"10:47:00\",\n        \"h_i_almuerzo\": \"13:00:00\",\n        \"h_f_almuerzo\": \"14:05:00\",\n        \"h_f_jornada\": \"17:30:00\",\n        \"ci\": \"1700000004\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "PUT - Actualizar firma manualmente",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"h_f_break\": \"10:45:00\",\n    \"a_f_break\": \"00:02:00\",\n    \"observacion\": \"Actualización manual de registro\"\n}"
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/firmas/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"firmas",
+						"1"
+					]
+				},
+				"description": "Actualiza campos específicos de una firma existente"
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"h_f_break\": \"10:45:00\",\n    \"a_f_break\": \"00:02:00\",\n    \"observacion\": \"Actualización manual\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/firmas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"firmas",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Firma actualizada correctamente\",\n    \"data\": {\n        \"id_f\": 1,\n        \"h_f_break\": \"10:45:00\",\n        \"a_f_break\": \"00:02:00\",\n        \"observacion\": \"Actualización manual\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "PUT - Autocompletar firmas incompletas",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/firmas/autocompletar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"firmas",
+						"autocompletar"
+					]
+				},
+				"description": "Autocompleta todas las firmas incompletas de días anteriores con hora de fin de turno y observaciones"
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/firmas/autocompletar",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"firmas",
+								"autocompletar"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"3 firmas autocompletadas\",\n    \"total\": 3\n}"
+				}
+			]
+		},
+		{
+			"name": "DELETE - Eliminar firma",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:5000/api/firmas/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"firmas",
+						"1"
+					]
+				},
+				"description": "Elimina una firma específica por su ID"
+			},
+			"response": [
+				{
+					"name": "Success Response",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/firmas/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"firmas",
+								"1"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": true,\n    \"message\": \"Firma eliminada correctamente\"\n}"
+				},
+				{
+					"name": "Not Found",
+					"originalRequest": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5000/api/firmas/999",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"firmas",
+								"999"
+							]
+						}
+					},
+					"status": "Not Found",
+					"code": 404,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"success\": false,\n    \"error\": \"Firma no encontrada\"\n}"
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:5000",
+			"type": "string"
+		},
+		{
+			"key": "api_prefix",
+			"value": "/api",
+			"type": "string"
+		}
+	]
+}
